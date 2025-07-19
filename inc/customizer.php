@@ -52,6 +52,39 @@ function wp_architech_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
+
+/**
+ * Adds Customizer-specific theme supports.
+ */
+function wp_architech_customizer_theme_support() {
+	// Set up the WordPress core custom background feature.
+	add_theme_support(
+		'custom-background',
+		apply_filters(
+			'wp_architech_custom_background_args',
+			array(
+				'default-color' => 'ffffff',
+				'default-image' => '',
+			)
+		)
+	);
+
+	/**
+	 * Add support for core custom logo.
+	 *
+	 * @link https://codex.wordpress.org/Theme_Logo
+	 */
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		)
+	);
+}
+add_action( 'after_setup_theme', 'wp_architech_customizer_theme_support' );
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
